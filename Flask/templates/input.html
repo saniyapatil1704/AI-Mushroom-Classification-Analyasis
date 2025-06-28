@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mushroom Classification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(ellipse at top, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.2);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      animation: fadeUp 1s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .upload-container {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    form.upload-form {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+    }
+
+    form.upload-form h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .file-label {
+      display: inline-block;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .file-label:hover {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      transform: scale(1.05);
+    }
+
+    #file_upload {
+      display: none;
+    }
+
+    #button-31 {
+      margin-top: 25px;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 105, 135, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    #button-31:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 105, 135, 0.8);
+    }
+
+    .preview {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #image-preview {
+      max-width: 100%;
+      border-radius: 16px;
+      border: 2px solid #00ffe5;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.4);
+      transition: all 0.5s ease;
+    }
+
+    #result {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 12px 20px;
+      background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      form.upload-form,
+      .preview {
+        width: 100%;
+        padding: 25px;
+      }
+
+      .file-label,
+      #button-31 {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="upload-container">
+      <form action="/Mushroom-classification-predict" method="post" enctype="multipart/form-data" class="upload-form">
+        <h3>Upload a Mushroom Image to Classify</h3>
+        <input type="file" name="image_file" id="file_upload" class="file-input">
+        <label for="file_upload" class="file-label">Select Mushroom Image</label>
+        <button type="submit" id="button-31">Predict</button>
+      </form>
+      <div class="preview">
+        <img id="image-preview" />
+      </div>
+    </div>
+  </div>
+
+  {% if prediction %}
+    <h2 id="result">
+      The Mushroom is = {{ prediction }}
+    </h2>
+  {% endif %}
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

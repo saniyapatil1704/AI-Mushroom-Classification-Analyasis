@@ -1,0 +1,21 @@
+# Ignore Python cache and environment files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+mushroom_env/
+Flask/mushroom_env/
+
+# Ignore large/binary/model files
+*.h5
+*.tgz
+*.dll
+*.pdb
+*.so
+*.dylib
+
+# System files
+.DS_Store
+Thumbs.db

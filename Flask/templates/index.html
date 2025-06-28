@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Mushroom Insights: Classify with Precision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg-light: #fdfcf9;
+      --color-card-dark: #1c2b2d;
+      --color-text-light: #ffffff;
+      --color-text-muted: #c9c9c9;
+      --color-accent-gold: #ffd700;
+      --color-button-hover: #e0c200;
+      --shadow-elevation: 0 10px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+      --border-radius-main: 25px;
+      --spacing-large: 60px;
+      --spacing-medium: 30px;
+      --spacing-small: 15px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, #e9f5f2, #f7f3e9);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .mushroom-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(28, 43, 45, 0.88);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-main);
+      box-shadow: var(--shadow-elevation);
+      max-width: 1200px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      animation: fadeInUp 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-panel {
+      flex: 1.5;
+      padding: var(--spacing-large);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 400px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .content-panel h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5vw;
+      margin-bottom: var(--spacing-small);
+      line-height: 1.1;
+      color: var(--color-accent-gold);
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+      animation: shimmer 4s infinite linear;
+      letter-spacing: 1px;
+    }
+
+    @keyframes shimmer {
+      0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+      50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+      100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    }
+
+    .content-panel h3 {
+      font-size: 1.5vw;
+      font-weight: 300;
+      margin-bottom: var(--spacing-medium);
+      color: var(--color-text-light);
+      opacity: 0.85;
+    }
+
+    .content-panel p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-large);
+      max-width: 550px;
+    }
+
+    .content-panel p strong {
+      color: var(--color-text-light);
+      font-weight: 700;
+    }
+
+    .action-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffd700, #ffce00);
+      color: var(--color-card-dark);
+      font-size: 1.1em;
+      font-weight: 700;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      animation: glow 3s infinite;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px #ffd700; }
+      50% { box-shadow: 0 0 20px #ffce00; }
+      100% { box-shadow: 0 0 5px #ffd700; }
+    }
+
+    .action-button:hover {
+      background: linear-gradient(135deg, #ffe347, #fcd000);
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .image-panel {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 0 var(--border-radius-main) var(--border-radius-main) 0;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+   .mushroom-img {
+  width: 700px;
+  height: 100%;
+  object-fit: cover; /* Shows full image */
+  position: absolute;  /* No absolute positioning */
+  z-index: 1;
+  left:1px;
+        transition: transform 0.8s ease;
+
+}
+
+
+
+
+    .image-panel:hover .mushroom-img {
+      transform: scale(1.06);
+      filter: brightness(1);
+    }
+
+    .mushroom-showcase::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200%;
+      height: 200%;
+      background: url('https://www.transparenttextures.com/patterns/purty-wood.png');
+      opacity: 0.02;
+      animation: drift 40s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-10%, -10%); }
+    }
+
+    /* --- Responsive Design --- */
+    @media (max-width: 1024px) {
+      .content-panel {
+        padding: var(--spacing-medium);
+      }
+      .content-panel h1 {
+        font-size: 5vw;
+      }
+      .content-panel h3 {
+        font-size: 2.5vw;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .mushroom-showcase {
+        flex-direction: column;
+        text-align: center;
+        border-radius: var(--border-radius-main);
+      }
+
+      .content-panel {
+        order: 2;
+        min-width: unset;
+        padding: var(--spacing-medium);
+      }
+
+      .content-panel h1 {
+        font-size: 8vw;
+      }
+
+      .content-panel h3 {
+        font-size: 4vw;
+      }
+
+      .content-panel p {
+        margin-bottom: var(--spacing-medium);
+      }
+
+      .image-panel {
+        order: 1;
+        min-width: unset;
+        height: 350px;
+        border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
+      }
+
+      .action-button {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .mushroom-showcase {
+        border-radius: 15px;
+      }
+
+      .content-panel {
+        padding: var(--spacing-small);
+      }
+
+      .content-panel h1 {
+        font-size: 9vw;
+      }
+
+      .content-panel h3 {
+        font-size: 5vw;
+      }
+
+      .content-panel p {
+        font-size: 0.9em;
+      }
+
+      .image-panel {
+        height: 250px;
+      }
+
+      .action-button {
+        font-size: 1em;
+        padding: 12px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mushroom-showcase">
+    <div class="content-panel">
+      <h1>Mushroom AI Insights</h1>
+      <h3>Unveiling Nature's Secrets with Precision Classification</h3>
+      <p>
+        Step into the fascinating realm of mycology! Our advanced AI project utilizes 
+        <strong>cutting-edge deep learning</strong> to provide accurate classifications of various mushroom types. 
+        Discover the unique characteristics of <strong>Boletus</strong>, <strong>Lactarius</strong>, and <strong>Russula</strong> 
+        species with instant, reliable insights. Perfect for enthusiasts, researchers, and anyone curious about 
+        the intricate world beneath the canopy.
+      </p>
+      <a href="{{ url_for('predict_page') }}">
+        <button class="action-button">Start Classification</button>
+      </a>
+    </div>
+    <div class="image-panel">
+      <img
+        class="mushroom-img"
+        src="{{ url_for('static', filename='images/mushroom.jpg') }}"
+        alt="Mushroom classification image"
+      />
+    </div>
+  </div>
+</body>
+</html>
