@@ -7,15 +7,15 @@
 ## **Screenshots**
 
 ### Home Page:
-<p align="center">
- <img src="https://drive.google.com/uc?export=view&id=1yBSh7zuDdUp8OQcxDxwxwZCf2UYlkPQO" width="800" height="auto" alt="Your Image Description">
+<!-- <p align="center">
+ <img src="https://drive.google.com/drive/u/0/my-drive" width="800" height="auto" alt="Your Image Description">
 
-</p>
+</p> -->
 
 ### Mushroom Classification Result:
-<p align="center">
+<!-- <p align="center">
  <img src="https://drive.google.com/uc?export=view&id=1gQ9ZSEXVydIrZwm0XUdYouLbkYFCJnGp" width="800" height="auto" alt="Classification Results Display">
-</p>
+</p> -->
 
 ## **Installation and Setup**
 
@@ -29,7 +29,7 @@ conda create -n mushroom_classifier python=3.10
 conda activate mushroom_classifier
 
 # Clone the repository
-git clone https://github.com/Rohitmh09/AI-Mushroom-Classification-Analysis.git
+git clone https://github.com/saniyapatil1704/AI-Mushroom-Classification-Analyasis.git
 cd AI-Mushroom-Classification-Analysis-master
 
 # Install dependencies
