@@ -7,15 +7,15 @@
 ## **Screenshots**
 
 ### Home Page:
-<!-- <p align="center">
- <img src="https://drive.google.com/drive/u/0/my-drive" width="800" height="auto" alt="Your Image Description">
+<p align="center">
+ <img src="https://drive.google.com/file/d/11IsqwKdVw7pnANWzXjMbkW6SOBWrIjia/view?usp=sharing" width="800" height="auto" alt="Your Image Description">
 
-</p> -->
+</p>
 
 ### Mushroom Classification Result:
-<!-- <p align="center">
- <img src="https://drive.google.com/uc?export=view&id=1gQ9ZSEXVydIrZwm0XUdYouLbkYFCJnGp" width="800" height="auto" alt="Classification Results Display">
-</p> -->
+<p align="center">
+ <img src="https://drive.google.com/file/d/14-wpAxyKIKVh4P6OLuRX1poVNQAV1rNK/view?usp=sharing" width="800" height="auto" alt="Classification Results Display">
+</p>
 
 ## **Installation and Setup**
 
